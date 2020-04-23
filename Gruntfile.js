@@ -193,7 +193,15 @@ module.exports = function( grunt ) {
 				singleRun: true
 			},
 			main: {
-				browsers: isTravis && travisBrowsers || [ "ChromeHeadless", "FirefoxHeadless" ]
+				browsers: isTravis && travisBrowsers || [ "ChromeHeadless", "FirefoxHeadless" ],
+				options: {
+					client: {
+						qunit: {
+							autostart: false,
+							dev: true
+						}
+					}
+				}
 			},
 			esmodules: {
 				browsers: isTravis && travisBrowsers || [ "ChromeHeadless" ],

@@ -93,6 +93,7 @@ var mocks = {
 	},
 	jsonp: function( req, resp, next ) {
 		var callback;
+		console.log( "*** Server jsonp query callback:", req.query.callback );
 		if ( req.query.callback ) {
 			callback = Promise.resolve( req.query.callback );
 		} else if ( req.method === "GET" ) {
@@ -110,6 +111,7 @@ var mocks = {
 				{ data: { lang: "en", length: 25 } }
 			);
 		callback.then( function( cb ) {
+			console.log( "*** Server jsonp callback:", cb );
 			resp.end( cb + "(" + json + ")" );
 		}, next );
 	},

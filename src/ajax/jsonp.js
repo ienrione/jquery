@@ -57,6 +57,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
 		// Install callback
 		overwritten = window[ callbackName ];
+		window.console.log( "Installing callback:", callbackName );
 		window[ callbackName ] = function() {
 			responseContainer = arguments;
 		};
@@ -66,10 +67,12 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
 			// If previous value didn't exist - remove it
 			if ( overwritten === undefined ) {
+				window.console.log( "Removing callback:", callbackName );
 				jQuery( window ).removeProp( callbackName );
 
 			// Otherwise restore preexisting value
 			} else {
+				window.console.log( "Restoring callback:", callbackName, "to:", overwritten );
 				window[ callbackName ] = overwritten;
 			}
 

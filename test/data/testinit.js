@@ -309,6 +309,10 @@ QUnit.jQuerySelectors = true;
 QUnit.isIE = !!window.document.documentMode;
 QUnit.testUnlessIE = QUnit.isIE ? QUnit.skip : QUnit.test;
 
+QUnit.testStart( function( details ) {
+	console.log( "Test:", details.name );
+} );
+
 this.loadTests = function() {
 
 	// QUnit.config is populated from QUnit.urlParams but only at the beginning
